@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Avengers Meeting Hub</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">A</div>
+        <div class="title">Avengers Meeting Hub</div>
+      </div>
+      <nav class="status">
+        <span class="node">Jarvis: Online</span>
+      </nav>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel">
+        <h2>Upcoming Briefing</h2>
+        <p class="meta">Location: Stark Tower — 14:00</p>
+        <div class="controls">
+          <button id="send-invite" class="btn primary">Send Invite</button>
+          <button id="schedule" class="btn">Schedule</button>
+        </div>
+      </section>
+
+      <section class="panel team">
+        <h3>Team</h3>
+        <div class="members-grid">
+          <div class="member-card" data-name="Charley Mann">Charley Mann</div>
+          <div class="member-card" data-name="Jenny Sajdera">Jenny Sajdera</div>
+          <div class="member-card" data-name="Andrew Zihmer">Andrew Zihmer</div>
+          <div class="member-card" data-name="Brittany Green">Brittany Green</div>
+          <div class="member-card" data-name="Chris Guymon">Chris Guymon</div>
+          <div class="member-card" data-name="Delisi Friday">Delisi Friday</div>
+          <div class="member-card" data-name="Erin Andersen">Erin Andersen</div>
+          <div class="member-card" data-name="Frank Rekas">Frank Rekas</div>
+          <div class="member-card" data-name="Gyi Tsakalakis">Gyi Tsakalakis</div>
+          <div class="member-card" data-name="Jonathan Hawkins">Jonathan Hawkins</div>
+          <div class="member-card" data-name="Kate Schenkel">Kate Schenkel</div>
+          <div class="member-card" data-name="Leah Miller">Leah Miller</div>
+          <div class="member-card" data-name="Ron Latz">Ron Latz</div>
+          <div class="member-card" data-name="Ryan McKeen">Ryan McKeen</div>
+        </div>
+      </section>
+    </main>
+
+    <button id="emergency" class="emergency-btn">Emergency Alert</button>
+
+    <footer class="footer">Stark Industries — Secure Comms</footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

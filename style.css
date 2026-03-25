@@ -1,0 +1,112 @@
+:root{
+  --bg:#020412;
+  --panel:#0b1220;
+  --accent:#00d4ff;
+  --muted:#9aa6b2;
+  --glass: rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Roboto, Arial, sans-serif;
+  background: radial-gradient(ellipse at bottom, #000010 0%, #000 60%);
+  color:#dbeaf3;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* Particle background animation */
+body::before{
+  content:'';
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-image:radial-gradient(2px 2px at 20px 30px, #00d4ff, rgba(0,212,255,0.2)),
+                    radial-gradient(2px 2px at 60px 70px, #4b9cff, rgba(75,156,255,0.2)),
+                    radial-gradient(1px 1px at 50px 50px, #fff, rgba(255,255,255,0.1)),
+                    radial-gradient(1px 1px at 130px 80px, #00d4ff, rgba(0,212,255,0.15));
+  background-repeat:repeat;
+  background-size:200px 200px;
+  animation:particles 80s linear infinite;
+  pointer-events:none;
+  z-index:1;
+}
+
+@keyframes particles{
+  0%{transform:translate(0,0)}
+  100%{transform:translate(-200px,-200px)}
+}
+
+body>*{
+  position:relative;
+  z-index:2;
+}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 28px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4b9cff);display:flex;align-items:center;justify-content:center;font-family:Orbitron, sans-serif;font-weight:700;color:#00121a
+}
+.title{font-weight:700;font-size:18px}
+.status .node{color:var(--accent);font-weight:600}
+
+.dashboard{display:flex;gap:20px;padding:28px}
+.panel{background:var(--panel);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(3,10,18,0.6);flex:1;border:1px solid rgba(255,255,255,0.02)}
+.panel h2,.panel h3{font-family:Orbitron, sans-serif;color:var(--accent);margin-bottom:8px}
+.meta{color:var(--muted);margin-bottom:12px}
+.controls{display:flex;gap:10px}
+.btn{padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.5)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#6ce8ff);color:#00121a;font-weight:700;border:none;animation:pulseBlueSoft .8s ease-in-out infinite}
+
+@keyframes pulseBlueSoft{
+  0%{box-shadow:0 2px 8px rgba(75,156,255,0.3)}
+  50%{box-shadow:0 6px 20px rgba(75,156,255,0.7)}
+  100%{box-shadow:0 2px 8px rgba(75,156,255,0.3)}
+}
+
+.members-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+.member-card{padding:10px 12px;background:rgba(75,156,255,0.08);border:1px solid rgba(75,156,255,0.2);border-radius:6px;color:var(--muted);cursor:pointer;transition:all .2s ease;display:flex;align-items:center;justify-content:space-between;font-size:13px}
+.member-card:hover{background:rgba(75,156,255,0.18);border-color:rgba(75,156,255,0.4);color:#dbeaf3}
+.member-card.confirmed{background:rgba(76,175,80,0.12);border-color:rgba(76,175,80,0.3);color:#4caf50}
+.member-card.confirmed::after{content:'✓';margin-left:6px;font-weight:700;font-size:14px}
+.footer{padding:14px 28px;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,0.02)}
+
+@media (max-width:800px){
+  .dashboard{flex-direction:column;padding:16px}
+}
+
+/* Emergency button (glowing red) */
+.emergency-btn{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:20px;
+  background:linear-gradient(45deg,#ff1e2d,#ff5a6a);
+  color:#fff;
+  border:none;
+  padding:12px 22px;
+  border-radius:28px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  cursor:pointer;
+  z-index:1000;
+  box-shadow:0 8px 40px rgba(255,40,40,0.45),0 0 30px rgba(255,0,0,0.12);
+  transition:transform .12s ease;
+  animation:pulse 1.6s infinite;
+}
+.emergency-btn:active{transform:translateX(-50%) scale(0.98)}
+
+@keyframes pulse{
+  0%{box-shadow:0 8px 30px rgba(255,40,40,0.35),0 0 10px rgba(255,0,0,0.08)}
+  50%{box-shadow:0 14px 48px rgba(255,40,40,0.55),0 0 26px rgba(255,0,0,0.18)}
+  100%{box-shadow:0 8px 30px rgba(255,40,40,0.35),0 0 10px rgba(255,0,0,0.08)}
+}
+
