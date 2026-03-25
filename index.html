@@ -1,58 +1,137 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Avengers Meeting Hub</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="brand">
-        <div class="logo">A</div>
-        <div class="title">Avengers Meeting Hub</div>
-      </div>
-      <nav class="status">
-        <span class="node">Jarvis: Online</span>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LFA KPI Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand" aria-label="LFA logo">LFA</div>
+      <nav class="sidebar-nav" aria-label="Primary navigation">
+        <a href="#" class="nav-link active">Dashboard</a>
+        <a href="#" class="nav-link">Metric Management</a>
+        <a href="#" class="nav-link">Settings</a>
       </nav>
-    </header>
+    </aside>
 
-    <main class="dashboard">
-      <section class="panel">
-        <h2>Upcoming Briefing</h2>
-        <p class="meta">Location: Stark Tower — 14:00</p>
-        <div class="controls">
-          <button id="send-invite" class="btn primary">Send Invite</button>
-          <button id="schedule" class="btn">Schedule</button>
+    <!-- Main Content -->
+    <div class="main">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-card">
+          <h1>LFA KPI Dashboard</h1>
+          <p>Weekly Performance Tracking | Friday — Thursday</p>
+          <div class="hero-actions">
+            <button id="download-btn" class="btn btn-secondary">📊 Download CSV</button>
+          </div>
         </div>
       </section>
 
-      <section class="panel team">
-        <h3>Team</h3>
-        <div class="members-grid">
-          <div class="member-card" data-name="Charley Mann">Charley Mann</div>
-          <div class="member-card" data-name="Jenny Sajdera">Jenny Sajdera</div>
-          <div class="member-card" data-name="Andrew Zihmer">Andrew Zihmer</div>
-          <div class="member-card" data-name="Brittany Green">Brittany Green</div>
-          <div class="member-card" data-name="Chris Guymon">Chris Guymon</div>
-          <div class="member-card" data-name="Delisi Friday">Delisi Friday</div>
-          <div class="member-card" data-name="Erin Andersen">Erin Andersen</div>
-          <div class="member-card" data-name="Frank Rekas">Frank Rekas</div>
-          <div class="member-card" data-name="Gyi Tsakalakis">Gyi Tsakalakis</div>
-          <div class="member-card" data-name="Jonathan Hawkins">Jonathan Hawkins</div>
-          <div class="member-card" data-name="Kate Schenkel">Kate Schenkel</div>
-          <div class="member-card" data-name="Leah Miller">Leah Miller</div>
-          <div class="member-card" data-name="Ron Latz">Ron Latz</div>
-          <div class="member-card" data-name="Ryan McKeen">Ryan McKeen</div>
+      <!-- Top Section: Weekly KPI Table (Full Width) -->
+      <section class="table-section">
+        <div class="section-header">
+          <h2>Weekly KPI Table</h2>
+          <p class="section-subtitle">Display only - edit data using the form below</p>
+        </div>
+        <div class="table-wrapper">
+          <table id="running-table">
+            <thead>
+              <tr id="header-row">
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+            <tfoot>
+              <tr id="totals-row" class="totals-row">
+                <td class="totals-label">Total</td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </section>
-    </main>
 
-    <button id="emergency" class="emergency-btn">Emergency Alert</button>
+      <!-- Bottom Section: Two-Column Layout -->
+      <div class="dashboard-footer">
+        <!-- Left Column: Add New Weekly Data -->
+        <section class="entry-section">
+          <div class="section-header">
+            <h2>Add New Weekly Data</h2>
+            <p class="section-subtitle">Input or delete weekly entries</p>
+          </div>
+          <div class="card">
+            <div class="form-group">
+              <label for="entry-date">Date</label>
+              <input type="date" id="entry-date">
+            </div>
+            <div class="form-group">
+              <label for="entry-owner">Team Member</label>
+              <select id="entry-owner">
+                <option value="Ifhel">Ifhel</option>
+                <option value="Bryan">Bryan</option>
+                <option value="Jenny">Jenny</option>
+                <option value="Charley">Charley</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="entry-metric">Metric</label>
+              <select id="entry-metric"></select>
+            </div>
+            <div class="form-group">
+              <label for="entry-value">Value</label>
+              <input type="text" id="entry-value" placeholder="Enter value or NA">
+            </div>
+            <div class="form-actions">
+              <button id="add-entry-btn" class="btn btn-primary">Add / Update Entry</button>
+              <button id="delete-entry-btn" class="btn btn-danger">Delete Entry</button>
+              <button id="clear-form-btn" class="btn btn-secondary">Clear Form</button>
+            </div>
+          </div>
+        </section>
 
-    <footer class="footer">Stark Industries — Secure Comms</footer>
+        <!-- Vertical Divider -->
+        <div class="divider"></div>
 
-    <script src="script.js"></script>
-  </body>
+        <!-- Right Column: Metric Management -->
+        <section class="management-section">
+          <div class="section-header">
+            <h2>Metric Management</h2>
+            <p class="section-subtitle">Add, edit, or delete metrics</p>
+          </div>
+          <div class="card">
+            <div class="form-group">
+              <label for="new-metric-name">Metric Name</label>
+              <input type="text" id="new-metric-name" placeholder="e.g., Churned Members">
+            </div>
+            <div class="form-group">
+              <label for="new-metric-owner">Owner</label>
+              <select id="new-metric-owner">
+                <option value="Ifhel">Ifhel</option>
+                <option value="Bryan">Bryan</option>
+                <option value="Jenny">Jenny</option>
+                <option value="Charley">Charley</option>
+              </select>
+            </div>
+            <button id="add-metric-btn" class="btn btn-primary">Add New Metric</button>
+          </div>
+
+          <!-- Existing Metrics List (collapsed) -->
+          <details class="metrics-accordion">
+            <summary>Manage Existing Categories ⚙️</summary>
+            <div class="card">
+              <h3 class="metrics-list-title">Current Metrics</h3>
+              <div id="metrics-list"></div>
+            </div>
+          </details>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
 </html>
